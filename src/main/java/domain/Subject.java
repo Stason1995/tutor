@@ -1,6 +1,10 @@
 package domain;
 
+import java.util.List;
+
 public class Subject {
+    private int subjectId;
+    private List<Question> questionList;
 
     public int getSubjectId() {
         return subjectId;
@@ -10,14 +14,11 @@ public class Subject {
         this.subjectId = subjectId;
     }
 
-    public Question getQuestion() {
-        return question;
+    public List<Question> getQuestion() {
+        return questionList;
     }
 
-    public void setQuestion(Question question) {
-        this.question = question;
+    public void setQuestion(List<Question> question) {
+        this.questionList = question;
     }
-
-    private int subjectId;
-    private Question question;
 }

@@ -3,6 +3,7 @@ package domain;
 public class Answer {
 
     private int answerId;
+    private Answer answer;
 
     public int getAnswerId() {
         return answerId;
@@ -19,6 +20,4 @@ public class Answer {
     public void setAnswer(Answer answer) {
         this.answer = answer;
     }
-
-    private Answer answer;
 }
