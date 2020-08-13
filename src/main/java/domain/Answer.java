@@ -2,22 +2,13 @@ package domain;
 
 public class Answer {
 
-    private int answerId;
-    private Answer answer;
+    private  long id;
 
-    public int getAnswerId() {
-        return answerId;
+    public long getId() {
+        return id;
     }
 
-    public void setAnswerId(int answerId) {
-        this.answerId = answerId;
-    }
-
-    public Answer getAnswer() {
-        return answer;
-    }
-
-    public void setAnswer(Answer answer) {
-        this.answer = answer;
+    public void setId(long id) {
+        this.id = id;
     }
 }

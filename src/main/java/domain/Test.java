@@ -3,21 +3,22 @@ package domain;
 import java.util.List;
 
 public class Test {
-    private int testId;
-    private List <Subject> subjectList;
+    private long id;
+    private List<Question> questionList;
 
-    public void setSubject(List<Subject> subject) {
-        this.subjectList = subject;
-    }
-    public List<Subject> getSubject() {
-        return subjectList;
+    public long getId() {
+        return id;
     }
 
-    public int getTestId() {
-        return testId;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public void setTestId(int testId) {
-        this.testId = testId;
+    public List<Question> getQuestionList() {
+        return questionList;
+    }
+
+    public void setQuestionList(List<Question> questionList) {
+        this.questionList = questionList;
     }
 }

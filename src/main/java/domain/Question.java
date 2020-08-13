@@ -4,15 +4,15 @@ import java.util.List;
 
 public class Question {
 
-    private int questionId;
+    private long id;
     private List<Answer> answerList;
 
-    public int getQuestionId() {
-        return questionId;
+    public long getId() {
+        return id;
     }
 
-    public void setQuestionId(int questionId) {
-        this.questionId = questionId;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public List<Answer> getAnswerList() {

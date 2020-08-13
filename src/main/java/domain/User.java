@@ -6,31 +6,13 @@ public class User {
         ADMIN, STUDENT
     }
 
-    private int userId;
-    private Result result;
-    private Answer answer;
+    private long id;
 
-    public int getUserId() {
-        return userId;
+    public long getId() {
+        return id;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public Result getResult() {
-        return result;
-    }
-
-    public void setResult(Result result) {
-        this.result = result;
-    }
-
-    public Answer getAnswer() {
-        return answer;
-    }
-
-    public void setAnswer(Answer answer) {
-        this.answer = answer;
+    public void setId(long id) {
+        this.id = id;
     }
 }
