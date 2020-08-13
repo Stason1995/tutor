@@ -1,8 +1,10 @@
 package service;
 
+import domain.Test;
+
 import java.io.IOException;
 
 public interface TestCreator {
 
-    public void createTest() throws IOException;
+    public Test createTest() throws IOException;
 }

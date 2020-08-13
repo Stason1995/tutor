@@ -6,19 +6,35 @@ import java.util.List;
 public class Subject {
     private long id;
     private List<Test> testList;
+    private SubjectName subjectName;
 
-    public enum idSubject{
+    public enum SubjectName {
         ALGEBRA, INFORMATICS, PHISICS, GEOMETRY, BIOLOGY
     }
-    public void idSubject(idSubject id){
-        switch (id){
-            case ALGEBRA: List<Test> AlgebraList = new ArrayList<>();
-            case INFORMATICS: List<Test> InformaticsList = new ArrayList<>();
-            case PHISICS: List<Test> PhisicsList = new ArrayList<>();
-            case GEOMETRY: List<Test> GeometryList = new ArrayList<>();
-            case BIOLOGY: List<Test> BiologyList = new ArrayList<>();
+
+    public SubjectName getSubjectName() {
+        return subjectName;
+    }
+
+    public void setSubjectName(SubjectName subjectName) {
+        this.subjectName = subjectName;
+    }
+
+    public void idSubject(SubjectName id) {  // Такого кода не должно быть в классах сущностях. Вынеси в сервис, если нужно.
+        switch (id) {
+            case ALGEBRA:
+                List<Test> AlgebraList = new ArrayList<>();
+            case INFORMATICS:
+                List<Test> InformaticsList = new ArrayList<>();
+            case PHISICS:
+                List<Test> PhisicsList = new ArrayList<>();
+            case GEOMETRY:
+                List<Test> GeometryList = new ArrayList<>();
+            case BIOLOGY:
+                List<Test> BiologyList = new ArrayList<>();
         }
     }
+
     public long getId() {
         return id;
     }
