@@ -17,7 +17,7 @@ public class User {
         return name;
     }
 
-    public void setName() throws IOException {
+    public void setName() throws IOException { //такого кода не должно быть в классах сущностях. Если хочешь проводить проверки - сделай  классы валидаторы, зоной ответственности которых будет проверка полей
         boolean exit = true;
         while (exit) {
             name = reader.readLine();
