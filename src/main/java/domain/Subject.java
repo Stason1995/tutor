@@ -6,11 +6,13 @@ import java.util.List;
 public class Subject {
     private long id;
     private List<Test> testList;
+    private SubjectName subjectName;
 
-    public enum idSubject{
+
+    public enum SubjectName{
         ALGEBRA, INFORMATICS, PHISICS, GEOMETRY, BIOLOGY
     }
-    public void idSubject(idSubject id){
+    /*public void SubjectName(Subject.SubjectName id){
         switch (id){
             case ALGEBRA: List<Test> AlgebraList = new ArrayList<>();
             case INFORMATICS: List<Test> InformaticsList = new ArrayList<>();
@@ -18,6 +20,13 @@ public class Subject {
             case GEOMETRY: List<Test> GeometryList = new ArrayList<>();
             case BIOLOGY: List<Test> BiologyList = new ArrayList<>();
         }
+    }*/
+    public SubjectName getSubjectName() {
+        return subjectName;
+    }
+
+    public void setSubjectName(SubjectName subjectName) {
+        this.subjectName = subjectName;
     }
     public long getId() {
         return id;
