@@ -9,8 +9,7 @@ import service.TestCreator;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import static domain.Subject.SubjectName.*;
 
@@ -46,9 +45,9 @@ public class CommandLineTestCreator implements TestCreator {
         int numberSubject = Integer.parseInt(reader.readLine());
         switch (numberSubject) {
             case 1:
-                SubjectName(Subject.SubjectName.ALGEBRA);
+                SubjectName(ALGEBRA);
             case 2:
-                SubjectName(Subject.SubjectName.INFORMATICS);
+                SubjectName(INFORMATICS);
             case 3:
                 SubjectName(PHISICS);
             case 4:
@@ -85,12 +84,23 @@ public class CommandLineTestCreator implements TestCreator {
     }
 
     private Answer createAnswer() throws IOException {
-        List<Answer> answerList = new ArrayList<>();
-        while (!reader.readLine().equals("exit")) {
-            Answer answer = new Answer();
-            answer.setAnswer(reader.readLine());
-            System.out.println("Ты ввёл "+answer.getAnswer());
+        int countAnswer = 1;
+        Map<Integer, String> answerMap = new HashMap<>();
+        Answer answer = new Answer();
+        boolean exit = true;
+        while (exit) {
+            String answerM = reader.readLine();
+            if (!answerM.isEmpty() && !answerM.equals("exit")) {
+                answerMap.put(countAnswer,answerM);
+                countAnswer += 1;
+            } else exit = false;
         }
+        answer.setAnswer(answerMap);
+        Set<Integer> keys = answerMap.keySet();
+        System.out.println("Ключи: " + keys);
+
+        ArrayList<String> values = new ArrayList<>(answerMap.values());
+        System.out.println("Значения: " + values);
         return new Answer();
     }
 
