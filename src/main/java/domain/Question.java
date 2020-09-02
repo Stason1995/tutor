@@ -7,6 +7,17 @@ public class Question {
     private long id;
     private List<Answer> answerList;
 
+    public String getNameQuestion() {
+        return nameQuestion;
+    }
+
+    public void setNameQuestion(String nameQuestion) {
+        this.nameQuestion = nameQuestion;
+    }
+
+    private String nameQuestion;
+
+
     public long getId() {
         return id;
     }

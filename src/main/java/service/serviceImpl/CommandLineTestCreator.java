@@ -24,11 +24,11 @@ public class CommandLineTestCreator implements TestCreator {
         Test test = new Test();
         Subject subject = createSubject();
         List<Question> questionList = new ArrayList<>();
-
+        System.out.println("Чтобы создать вопрос нажми Enter. Если хочешь закончить - введи exit");
         while (!reader.readLine().equals("exit")) {
             questionList.add(createQuestion());
+            System.out.println("Чтобы создать следующий вопрос нажми Enter. Если хочешь закончить - введи exit");
         }
-
         test.setSubject(String.valueOf(subject.getSubjectName()));
         test.setQuestionList(questionList);
         return test;
@@ -46,41 +46,63 @@ public class CommandLineTestCreator implements TestCreator {
         switch (numberSubject) {
             case 1:
                 SubjectName(ALGEBRA);
+                break;
             case 2:
                 SubjectName(INFORMATICS);
+                break;
             case 3:
                 SubjectName(PHISICS);
+                break;
             case 4:
                 SubjectName(GEOMETRY);
+                break;
             case 5:
                 SubjectName(BIOLOGY);
+                break;
         }
-        System.out.println("Ты выбрал: "+subject.getSubjectName());
+
         return subject;
     }
 
     public void SubjectName(Subject.SubjectName id){
         switch (id){
-            case ALGEBRA: List<Test> AlgebraList = new ArrayList<>();
-            case INFORMATICS: List<Test> InformaticsList = new ArrayList<>();
-            case PHISICS: List<Test> PhisicsList = new ArrayList<>();
-            case GEOMETRY: List<Test> GeometryList = new ArrayList<>();
-            case BIOLOGY: List<Test> BiologyList = new ArrayList<>();
+            case ALGEBRA: {
+                System.out.println("Ты выбрал Алгебру");
+                List<Test> AlgebraList = new ArrayList<>();
+                break;
+            }
+            case INFORMATICS:{
+                System.out.println("Ты выбрал Информатику");
+                List<Test> InformaticsList = new ArrayList<>();
+                break;
+            }
+            case PHISICS:{
+                System.out.println("Ты выбрал Физику");
+                List<Test> PhisicsList = new ArrayList<>();
+                break;
+            }
+            case GEOMETRY:{
+                System.out.println("Ты выбрал Геометрию");
+                List<Test> GeometryList = new ArrayList<>();
+                break;
+            }
+            case BIOLOGY:{
+                System.out.println("Ты выбрал Биологию");
+                List<Test> BiologyList = new ArrayList<>();
+                break;
+            }
         }
     }
 
     private Question createQuestion() throws IOException {
         List<Answer> answerList = new ArrayList<>();
+        Question question = new Question();
         System.out.println("Введите ваш вопрос");
-        while (!reader.readLine().equals("exit")) {
-            System.out.println("Введите ваш вариант ответа");
-            answerList.add(createAnswer());
-        }
-        ///Введите вопрос бла-бла-бла
-        ///ВВедите вариант ответа №1 ....
-        //answerList.add(createAnswer());
-        ///...
-        return new Question();
+        question.setNameQuestion(reader.readLine());
+        System.out.println("Введите ваш вариант ответа");
+        answerList.add(createAnswer());
+
+        return question;
     }
 
     private Answer createAnswer() throws IOException {
@@ -93,6 +115,7 @@ public class CommandLineTestCreator implements TestCreator {
             if (!answerM.isEmpty() && !answerM.equals("exit")) {
                 answerMap.put(countAnswer,answerM);
                 countAnswer += 1;
+                System.out.println("Введите следующий вариант или введите exit или нажми Enter");
             } else exit = false;
         }
         answer.setAnswer(answerMap);
@@ -101,8 +124,8 @@ public class CommandLineTestCreator implements TestCreator {
 
         ArrayList<String> values = new ArrayList<>(answerMap.values());
         System.out.println("Значения: " + values);
-        return new Answer();
-    }
 
+        return answer;
+    }
 }
 
