@@ -68,27 +68,22 @@ public class CommandLineTestCreator implements TestCreator {
         switch (id){
             case ALGEBRA: {
                 System.out.println("Ты выбрал Алгебру");
-                List<Test> AlgebraList = new ArrayList<>();
                 break;
             }
             case INFORMATICS:{
                 System.out.println("Ты выбрал Информатику");
-                List<Test> InformaticsList = new ArrayList<>();
                 break;
             }
             case PHISICS:{
                 System.out.println("Ты выбрал Физику");
-                List<Test> PhisicsList = new ArrayList<>();
                 break;
             }
             case GEOMETRY:{
                 System.out.println("Ты выбрал Геометрию");
-                List<Test> GeometryList = new ArrayList<>();
                 break;
             }
             case BIOLOGY:{
                 System.out.println("Ты выбрал Биологию");
-                List<Test> BiologyList = new ArrayList<>();
                 break;
             }
         }
