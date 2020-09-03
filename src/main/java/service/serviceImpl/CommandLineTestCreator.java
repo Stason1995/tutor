@@ -6,16 +6,13 @@ import domain.Subject;
 import domain.Test;
 import service.TestCreator;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.*;
 
 import static domain.Subject.SubjectName.*;
 
 public class CommandLineTestCreator implements TestCreator {
     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-
     public CommandLineTestCreator() {
     }
 
@@ -23,6 +20,7 @@ public class CommandLineTestCreator implements TestCreator {
     public Test createTest() throws IOException { //доделай методы
         Test test = new Test();
         Subject subject = createSubject();
+
         List<Question> questionList = new ArrayList<>();
         System.out.println("Чтобы создать вопрос нажми Enter. Если хочешь закончить - введи exit");
         while (!reader.readLine().equals("exit")) {
@@ -34,14 +32,26 @@ public class CommandLineTestCreator implements TestCreator {
         return test;
     }
 
+    public void writeText(String string){
+        try(FileOutputStream text =new FileOutputStream("D:/result.txt", true))
+        {
+            // перевод строки в байты
+            byte[] buffer = string.getBytes();
+
+            text.write(buffer, 0, buffer.length);
+        }
+        catch(IOException ex){
+
+            System.out.println(ex.getMessage());
+        }
+    }
+
     private Subject createSubject() throws IOException {
         Subject subject = new Subject();
         System.out.println("Введи номер темы для теста: \n" +
                 "1 - Алгебра\n" +
                 "2 - Информатика\n" +
-                "3 - Физика\n" +
-                "4 - Геометрия\n" +
-                "5 - Биология\n");
+                "3 - Физика\n");
         int numberSubject = Integer.parseInt(reader.readLine());
         switch (numberSubject) {
             case 1:
@@ -53,12 +63,6 @@ public class CommandLineTestCreator implements TestCreator {
             case 3:
                 SubjectName(PHISICS);
                 break;
-            case 4:
-                SubjectName(GEOMETRY);
-                break;
-            case 5:
-                SubjectName(BIOLOGY);
-                break;
         }
 
         return subject;
@@ -68,22 +72,20 @@ public class CommandLineTestCreator implements TestCreator {
         switch (id){
             case ALGEBRA: {
                 System.out.println("Ты выбрал Алгебру");
+                String n = "Тест по алгебре!" + "\n";
+                writeText(n);
                 break;
             }
             case INFORMATICS:{
                 System.out.println("Ты выбрал Информатику");
+                String n = "Тест по  информатике!" + "\n";
+                writeText(n);
                 break;
             }
             case PHISICS:{
                 System.out.println("Ты выбрал Физику");
-                break;
-            }
-            case GEOMETRY:{
-                System.out.println("Ты выбрал Геометрию");
-                break;
-            }
-            case BIOLOGY:{
-                System.out.println("Ты выбрал Биологию");
+                String n = "Тест по физике!" + "\n";
+                writeText(n);
                 break;
             }
         }
@@ -94,9 +96,10 @@ public class CommandLineTestCreator implements TestCreator {
         Question question = new Question();
         System.out.println("Введите ваш вопрос");
         question.setNameQuestion(reader.readLine());
+        String n = question.getNameQuestion() + "\n";
+        writeText(n);
         System.out.println("Введите ваш вариант ответа");
         answerList.add(createAnswer());
-
         return question;
     }
 
@@ -110,9 +113,12 @@ public class CommandLineTestCreator implements TestCreator {
             if (!answerM.isEmpty() && !answerM.equals("exit")) {
                 answerMap.put(countAnswer,answerM);
                 countAnswer += 1;
+                answerM += "\n";
+                writeText(answerM);
                 System.out.println("Введите следующий вариант или введите exit или нажми Enter");
             } else exit = false;
         }
+
         answer.setAnswer(answerMap);
         Set<Integer> keys = answerMap.keySet();
         System.out.println("Ключи: " + keys);

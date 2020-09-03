@@ -6,6 +6,7 @@ public class Question {
 
     private long id;
     private List<Answer> answerList;
+    private String nameQuestion;
 
     public String getNameQuestion() {
         return nameQuestion;
@@ -15,7 +16,7 @@ public class Question {
         this.nameQuestion = nameQuestion;
     }
 
-    private String nameQuestion;
+
 
 
     public long getId() {

@@ -5,7 +5,7 @@ import java.util.List;
 public class Test {
     private long id;
     private List<Question> questionList;
-    private List<Test> testList;
+
     private String subject;
 
 
@@ -23,14 +23,6 @@ public class Test {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public List<Test> getTestList() {
-        return testList;
-    }
-
-    public void setTestList(List<Test> testList) {
-        this.testList = testList;
     }
 
     public List<Question> getQuestionList() {
