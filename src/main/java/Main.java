@@ -14,7 +14,15 @@ public class Main {
         List<Test> testList = new ArrayList<>();
         System.out.println("Привет! Давай познакомимся, напиши как тебя зовут");
         User user = new User();
-        user.setName();  //Валидаторы, Стасик. Или напиши логику в Мэйн классе.
+        boolean exit = true;
+        while (exit) {
+           String name = reader.readLine();
+            if (name != null && !name.isEmpty()) {
+                user.setName(name);
+                exit = false;
+            } else
+                System.out.println("Имя не может быть пустым! Попробуй ещё раз ;-)");
+        }
         System.out.println("Очень приятно, "+user.getName()+". Давай создадим с тобой тест");
         CommandLineTestCreator test = new CommandLineTestCreator();
 

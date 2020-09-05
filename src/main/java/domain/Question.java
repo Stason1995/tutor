@@ -7,6 +7,15 @@ public class Question {
     private long id;
     private List<Answer> answerList;
     private String nameQuestion;
+    private String correctAnswer;
+
+    public String getCorrectAnswer() {
+        return correctAnswer;
+    }
+
+    public void setCorrectAnswer(String correctAnswer) {
+        this.correctAnswer = correctAnswer;
+    }
 
     public String getNameQuestion() {
         return nameQuestion;

@@ -5,13 +5,13 @@ import java.util.Map;
 public class Answer {
 
     private  long id;
-    private Map<Integer, String> answer;
+    private String answer;
 
-    public Map<Integer, String> getAnswer() {
+    public String getAnswer() {
         return answer;
     }
 
-    public void setAnswer(Map<Integer, String> answer) {
+    public void setAnswer(String answer) {
         this.answer = answer;
     }
 

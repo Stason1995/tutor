@@ -94,37 +94,28 @@ public class CommandLineTestCreator implements TestCreator {
     private Question createQuestion() throws IOException {
         List<Answer> answerList = new ArrayList<>();
         Question question = new Question();
+
         System.out.println("Введите ваш вопрос");
         question.setNameQuestion(reader.readLine());
         String n = question.getNameQuestion() + "\n";
         writeText(n);
-        System.out.println("Введите ваш вариант ответа");
-        answerList.add(createAnswer());
+
+        System.out.println("Чтобы создать варианты ответа нажми Enter. Если хочешь закончить - введи exit");
+        while (!reader.readLine().equals("exit")) {
+            answerList.add(createAnswer());
+            System.out.println("Введите следующий вариант. Чтобы закончить введите exit или нажми Enter");
+        }
+
         return question;
     }
 
     private Answer createAnswer() throws IOException { //Странная логика. Перепиши. Нужна связь вопроса и ответов. Вопрос должен в себе содержать список ответов.
-        int countAnswer = 1;
-        Map<Integer, String> answerMap = new HashMap<>();
         Answer answer = new Answer();
-        boolean exit = true;
-        while (exit) {
-            String answerM = reader.readLine();
-            if (!answerM.isEmpty() && !answerM.equals("exit")) {
-                answerMap.put(countAnswer,answerM);
-                countAnswer += 1;
-                answerM += "\n";
-                writeText(answerM);
-                System.out.println("Введите следующий вариант или введите exit или нажми Enter");
-            } else exit = false;
-        }
-
-        answer.setAnswer(answerMap);
-        Set<Integer> keys = answerMap.keySet();
-        System.out.println("Ключи: " + keys);
-
-        ArrayList<String> values = new ArrayList<>(answerMap.values());
-        System.out.println("Значения: " + values);
+        System.out.println("Введите ваш вариант ответа");
+        String possibleAnswer = reader.readLine();
+        answer.setAnswer(possibleAnswer);
+        possibleAnswer += "\n";
+        writeText(possibleAnswer);
 
         return answer;
     }
