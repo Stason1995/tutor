@@ -33,7 +33,7 @@ public class CommandLineTestCreator implements TestCreator {
     }
 
     public void writeText(String string){
-        try(FileOutputStream text =new FileOutputStream("D:/result.txt", true))
+        try(FileOutputStream text =new FileOutputStream("D:/result.txt", true)) // скрин скинул. Не у всех есть диск D (используй относительные пути). Храни файлы локально в папке проекта. Можешь сделать отдельный пакет.
         {
             // перевод строки в байты
             byte[] buffer = string.getBytes();
@@ -61,7 +61,7 @@ public class CommandLineTestCreator implements TestCreator {
                 SubjectName(INFORMATICS);
                 break;
             case 3:
-                SubjectName(PHISICS);
+                SubjectName(PHYSICS);
                 break;
         }
 
@@ -82,7 +82,7 @@ public class CommandLineTestCreator implements TestCreator {
                 writeText(n);
                 break;
             }
-            case PHISICS:{
+            case PHYSICS:{
                 System.out.println("Ты выбрал Физику");
                 String n = "Тест по физике!" + "\n";
                 writeText(n);
@@ -103,7 +103,7 @@ public class CommandLineTestCreator implements TestCreator {
         return question;
     }
 
-    private Answer createAnswer() throws IOException {
+    private Answer createAnswer() throws IOException { //Странная логика. Перепиши. Нужна связь вопроса и ответов. Вопрос должен в себе содержать список ответов.
         int countAnswer = 1;
         Map<Integer, String> answerMap = new HashMap<>();
         Answer answer = new Answer();

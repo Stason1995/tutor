@@ -17,7 +17,7 @@ public class Subject {
     }
 
     public enum SubjectName{
-        ALGEBRA, INFORMATICS, PHISICS,
+        ALGEBRA, INFORMATICS, PHYSICS,
     }
     public SubjectName getSubjectName() {
         return subjectName;

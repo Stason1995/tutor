@@ -14,7 +14,7 @@ public class Main {
         List<Test> testList = new ArrayList<>();
         System.out.println("Привет! Давай познакомимся, напиши как тебя зовут");
         User user = new User();
-        user.setName();
+        user.setName();  //Валидаторы, Стасик. Или напиши логику в Мэйн классе.
         System.out.println("Очень приятно, "+user.getName()+". Давай создадим с тобой тест");
         CommandLineTestCreator test = new CommandLineTestCreator();
 

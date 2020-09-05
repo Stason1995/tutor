@@ -17,7 +17,7 @@ public class User {
         return name;
     }
 
-    public void setName() throws IOException {
+    public void setName() throws IOException { //Этого быть не должно. Классы сущности хранят только логику
         boolean exit = true;
         while (exit) {
             name = reader.readLine();
