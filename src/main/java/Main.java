@@ -23,7 +23,7 @@ public class Main {
             } else
                 System.out.println("Имя не может быть пустым! Попробуй ещё раз ;-)");
         }
-        System.out.println("Очень приятно, "+user.getName()+". Давай создадим с тобой тест");
+        System.out.println("Очень приятно, "+user.getName()+". Давай создадим с тобой тест\n");
         CommandLineTestCreator test = new CommandLineTestCreator();
 
         testList.add(test.createTest());

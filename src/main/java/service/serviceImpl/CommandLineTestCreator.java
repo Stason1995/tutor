@@ -17,15 +17,18 @@ public class CommandLineTestCreator implements TestCreator {
     }
 
     @Override
-    public Test createTest() throws IOException { //доделай методы
+    public Test createTest() throws IOException {
         Test test = new Test();
         Subject subject = createSubject();
+        boolean exit = true;
 
         List<Question> questionList = new ArrayList<>();
-        System.out.println("Чтобы создать вопрос нажми Enter. Если хочешь закончить - введи exit");
-        while (!reader.readLine().equals("exit")) {
-            questionList.add(createQuestion());
-            System.out.println("Чтобы создать следующий вопрос нажми Enter. Если хочешь закончить - введи exit");
+        while (exit) {
+            System.out.println("Напиши новый вопрос! Чтобы закончить введи \"exit\"");
+            String question = reader.readLine();
+            if(!question.equals("exit")){
+                questionList.add(createQuestion(question));
+            } else exit = false;
         }
         test.setSubject(String.valueOf(subject.getSubjectName()));
         test.setQuestionList(questionList);
@@ -33,12 +36,12 @@ public class CommandLineTestCreator implements TestCreator {
     }
 
     public void writeText(String string){
-        try(FileOutputStream text =new FileOutputStream("D:/result.txt", true)) // скрин скинул. Не у всех есть диск D (используй относительные пути). Храни файлы локально в папке проекта. Можешь сделать отдельный пакет.
-        {
-            // перевод строки в байты
-            byte[] buffer = string.getBytes();
 
-            text.write(buffer, 0, buffer.length);
+        File text = new File("result.txt");
+        try{
+            PrintWriter writer = new PrintWriter (new BufferedWriter(new FileWriter(text, true)));
+            writer.println(string);
+            writer.close();
         }
         catch(IOException ex){
 
@@ -72,49 +75,48 @@ public class CommandLineTestCreator implements TestCreator {
         switch (id){
             case ALGEBRA: {
                 System.out.println("Ты выбрал Алгебру");
-                String n = "Тест по алгебре!" + "\n";
-                writeText(n);
+                writeText("Тест по алгебре!");
                 break;
             }
             case INFORMATICS:{
                 System.out.println("Ты выбрал Информатику");
-                String n = "Тест по  информатике!" + "\n";
-                writeText(n);
+                writeText("Тест по  информатике!");
                 break;
             }
             case PHYSICS:{
                 System.out.println("Ты выбрал Физику");
-                String n = "Тест по физике!" + "\n";
-                writeText(n);
+                writeText("Тест по физике!");
                 break;
             }
         }
     }
 
-    private Question createQuestion() throws IOException {
+    private Question createQuestion(String questions) throws IOException {
         List<Answer> answerList = new ArrayList<>();
         Question question = new Question();
+        boolean exit = true;
+        int counter = 1;
 
-        System.out.println("Введите ваш вопрос");
-        question.setNameQuestion(reader.readLine());
-        String n = question.getNameQuestion() + "\n";
-        writeText(n);
 
-        System.out.println("Чтобы создать варианты ответа нажми Enter. Если хочешь закончить - введи exit");
-        while (!reader.readLine().equals("exit")) {
-            answerList.add(createAnswer());
-            System.out.println("Введите следующий вариант. Чтобы закончить введите exit или нажми Enter");
+        question.setNameQuestion(questions);
+        writeText("\n"+question.getNameQuestion()+"\n");
+
+
+        while (exit) {
+            System.out.println("Напиши "+counter+"-й вариант ответа! Чтобы создать новый вопрос введи \"exit\"");
+            String answer = reader.readLine();
+            if(!answer.equals("exit")){
+                answerList.add(createAnswer(answer));
+                counter ++;
+            } else exit = false;
         }
 
         return question;
     }
 
-    private Answer createAnswer() throws IOException { //Странная логика. Перепиши. Нужна связь вопроса и ответов. Вопрос должен в себе содержать список ответов.
+    private Answer createAnswer(String possibleAnswer) throws IOException {
         Answer answer = new Answer();
-        System.out.println("Введите ваш вариант ответа");
-        String possibleAnswer = reader.readLine();
         answer.setAnswer(possibleAnswer);
-        possibleAnswer += "\n";
         writeText(possibleAnswer);
 
         return answer;
