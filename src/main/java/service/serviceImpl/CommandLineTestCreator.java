@@ -30,8 +30,10 @@ public class CommandLineTestCreator implements TestCreator {
                 questionList.add(createQuestion(question));
             } else exit = false;
         }
+        System.out.println(subject.getSubjectName());
         test.setSubject(String.valueOf(subject.getSubjectName()));
         test.setQuestionList(questionList);
+        System.out.println("Выводим поле объекта класса ТЕСТ: " + test.getSubject());
         return test;
     }
 
@@ -72,19 +74,24 @@ public class CommandLineTestCreator implements TestCreator {
     }
 
     public void SubjectName(Subject.SubjectName id){
+        Subject subject = new Subject();
         switch (id){
             case ALGEBRA: {
                 System.out.println("Ты выбрал Алгебру");
+                subject.setSubjectName(ALGEBRA);
+                System.out.println("Выводим значение поля объекта ТЕМА: " + subject.getSubjectName());
                 writeText("Тест по алгебре!");
                 break;
             }
             case INFORMATICS:{
                 System.out.println("Ты выбрал Информатику");
+                subject.setSubjectName(INFORMATICS);
                 writeText("Тест по  информатике!");
                 break;
             }
             case PHYSICS:{
                 System.out.println("Ты выбрал Физику");
+                subject.setSubjectName(PHYSICS);
                 writeText("Тест по физике!");
                 break;
             }

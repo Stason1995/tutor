@@ -27,6 +27,5 @@ public class Main {
         CommandLineTestCreator test = new CommandLineTestCreator();
 
         testList.add(test.createTest());
-        System.out.println(testList);
     }
 }
